@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ukrainian Drone Industry</title>
+    <style>
+        /* Basic Reset & Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f7f6;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, rgba(0,81,170,1) 0%, rgba(255,205,0,1) 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        header nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        header nav ul li {
+            margin-left: 20px;
+        }
+
+        header nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        header nav ul li a:hover {
+            color: #e0e0e0;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: url('https://images.unsplash.com/photo-1517413057171-52215135742f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero .container {
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease-out forwards;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease-out forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            animation: bounceIn 1s ease-out forwards;
+        }
+
+        .cta-button:hover {
+            background-color: #0056b3;
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        section {
+            padding: 60px 0;
+        }
+
+        section h3 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: #0056b3;
+        }
+
+        /* About Section */
+        .about .container {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-content {
+            flex: 1;
+        }
+
+        .about-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .about-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Capabilities Section */
+        .capabilities {
+            background-color: #ffffff;
+        }
+
+        .capabilities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .capability-item {
+            background-color: #f9f9f9;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .capability-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .capability-item i {
+            font-size: 3rem;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        .capability-item h4 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #0056b3;
+        }
+
+        /* Innovation Section */
+        .innovation {
+            background-color: #eef2f7;
+        }
+
+        .innovation-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .innovation-content p {
+            font-size: 1.2rem;
+            max-width: 800px;
+        }
+
+        /* Gallery/Showcase Section */
+        .showcase {
+            background-color: #ffffff;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .showcase-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .showcase-item img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .showcase-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+        }
+
+        .showcase-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .showcase-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #0056b3;
+            color: white;
+            text-align: center;
+        }
+
+        .contact .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .contact h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .contact p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: calc(50% - 15px);
+            padding: 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit;
+        }
+
+        .contact-form textarea {
+            width: 100%;
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .contact-form button {
+            background-color: #ffc107;
+            color: #333;
+            padding: 15px 40px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .contact-form button:hover {
+            background-color: #e0a800;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes bounceIn {
+            from, 20%, 53%, 80%, to { transform: scale(1); }
+            40%, 45% { transform: scale(1.05); }
+            70% { transform: scale(1.03); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            header nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+
+            header nav ul li {
+                margin: 0 10px;
+            }
+
+            .hero {
+                height: 60vh;
+            }
+
+            .hero h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .about .container {
+                flex-direction: column;
+            }
+
+            .about-image img {
+                margin-top: 20px;
+            }
+
+            .contact-form input[type="text"],
+            .contact-form input[type="email"] {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Ukraine Drone Industry</h1>
+            <nav>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#capabilities">Capabilities</a></li>
+                    <li><a href="#innovation">Innovation</a></li>
+                    <li><a href="#showcase">Showcase</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>Leading the Skies: Innovation and Resilience</h2>
+            <p>Discover the cutting edge of Ukraine's drone technology and its global impact.</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <h3>About the Industry</h3>
+                <p>Ukraine has rapidly emerged as a global leader in drone technology, driven by innovation, resilience, and a commitment to excellence. Our industry is at the forefront of developing advanced unmanned aerial systems (UAS) for a diverse range of applications, from defense and security to agriculture, infrastructure monitoring, and humanitarian aid. We are shaping the future of aerial technology with solutions that are both powerful and adaptable.</p>
+            </div>
+            <div class="about-image">
+                <img src="https://images.unsplash.com/photo-1605630543174-00e8182f08b8?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Ukrainian drone in flight">
+            </div>
+        </div>
+    </section>
+
+    <section id="capabilities" class="capabilities">
+        <div class="container">
+            <h3>Our Capabilities</h3>
+            <div class="capabilities-grid">
+                <div class="capability-item">
+                    <i class="fas fa-shield-alt"></i> <!-- Font Awesome icon -->
+                    <h4>Defense & Security</h4>
+                    <p>Advanced reconnaissance, surveillance, and tactical deployment systems.</p>
+                </div>
+                <div class="capability-item">
+                    <i class="fas fa-seedling"></i> <!-- Font Awesome icon -->
+                    <h4>Agriculture</h4>
+                    <p>Precision farming, crop monitoring, and efficient land management solutions.</p>
+                </div>
+                <div class="capability-item">
+                    <i class="fas fa-tools"></i> <!-- Font Awesome icon -->
+                    <h4>Infrastructure</h4>
+                    <p>Inspection of bridges, power lines, pipelines, and other critical assets.</p>
+                </div>
+                <div class="capability-item">
+                    <i class="fas fa-heartbeat"></i> <!-- Font Awesome icon -->
+                    <h4>Humanitarian Aid</h4>
+                    <p>Search and rescue operations, disaster response, and supply delivery.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="innovation" class="innovation">
+        <div class="container innovation-content">
+            <h3>Driving Innovation</h3>
+            <p>We are constantly pushing the boundaries of what's possible. Our commitment to research and development ensures that Ukraine remains at the cutting edge of drone technology, fostering a dynamic ecosystem of innovation that addresses complex global challenges and creates new opportunities.</p>
+        </div>
+    </section>
+
+    <section id="showcase" class="showcase">
+        <div class="container">
+            <h3>Showcase</h3>
+            <div class="showcase-grid">
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1575767102308-22f883a34774?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 1">
+                    <div class="overlay">Model Alpha</div>
+                </div>
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1517413057171-52215135742f?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 2">
+                    <div class="overlay">Model Beta</div>
+                </div>
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1584356137923-8789e7c83d15?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 3">
+                    <div class="overlay">Model Gamma</div>
+                </div>
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1614935619989-0441a38731a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 4">
+                    <div class="overlay">Model Delta</div>
+                </div>
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1596079028700-501171190b61?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 5">
+                    <div class="overlay">Model Epsilon</div>
+                </div>
+                <div class="showcase-item">
+                    <img src="https://images.unsplash.com/photo-1569344921071-d698a9692134?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=50" alt="Drone model 6">
+                    <div class="overlay">Model Zeta</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h3>Connect With Us</h3>
+            <p>Let's collaborate and shape the future of drone technology together.</p>
+            <form class="contact-form">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Ukrainian Drone Industry. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Font Awesome for icons - Make sure to include this in your project -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script>
+        // Basic JavaScript for potential future enhancements or simple interactions
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Landing page loaded. Ready for action!');
+
+            // Example: Simple animation trigger on scroll (optional)
+            const sections = document.querySelectorAll('section');
+            const observerOptions = {
+                root: null,
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // You can add more complex animations here if needed
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
